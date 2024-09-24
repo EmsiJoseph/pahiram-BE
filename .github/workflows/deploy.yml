@@ -20,7 +20,8 @@ jobs:
           extensions: pdo, pgsql
 
       - name: Install Composer dependencies
-        run: composer install --no-dev --prefer-dist --optimize-autoloader
+        run: composer install --prefer-dist --no-ansi --no-interaction --no-progress
+        
 
       - name: Clear Laravel cache
         run: |
