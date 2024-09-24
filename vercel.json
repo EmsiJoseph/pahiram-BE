@@ -23,7 +23,7 @@
 
     "APP_ENV": "production",
     "APP_DEBUG": "true",
-    "APP_URL": "https://pahiram-be.vercel.app",
+    "APP_URL": "https://pahiram-be-test.vercel.app",
     "APP_KEY": "base64:jctezs66UY7l/xT4dF7oHGhygx0CMf9zQkRKpQVk3W0=",
 
     "APP_CONFIG_CACHE": "/tmp/config.php",
