@@ -4,36 +4,38 @@
   "functions": {
     "api/index.php": { "runtime": "vercel-php@0.6.0" }
   },
-  "routes": [{
-    "src": "/(.*)",
-    "dest": "/api/index.php"
-  }],
-  "env": {
-    "APCIS_URL": "http://167.172.74.157/api",
-    "APP_NAME": "Pahiram BE Test",
-    
-    "DB_CONNECTION": "mysql",
-    "DB_HOST": "mysql",
-    "DB_PORT": "3306",
-    "DB_DATABASE": "pahiram-BE",
-    "DB_USERNAME": "root",
-    "DB_PASSWORD": "Giraffe#88Bubblegum",
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api/index.php"
+    }
+  ],
+  "build": {
+    "env": {
+      "APCIS_URL": "http://167.172.74.157/api",
+      "APP_NAME": "Pahiram BE Test",
 
-    "APP_ENV": "production",
-    "APP_DEBUG": "true",
-    "APP_URL": "https://pahiram-be.vercel.app",
+      "DB_CONNECTION": "pgsql",
+      "DB_HOST": "ep-young-brook-a53osgmy.us-east-2.aws.neon.tech",
+      "DB_PORT": "5432",
+      "DB_DATABASE": "neondb",
+      "DB_USERNAME": "neondb_owner",
+      "DB_PASSWORD": "jsJok0EcaTl7",
 
-    "APP_CONFIG_CACHE": "/tmp/config.php",
-    "APP_EVENTS_CACHE": "/tmp/events.php",
-    "APP_PACKAGES_CACHE": "/tmp/packages.php",
-    "APP_ROUTES_CACHE": "/tmp/routes.php",
-    "APP_SERVICES_CACHE": "/tmp/services.php",
-    "VIEW_COMPILED_PATH": "/tmp",
+      "APP_ENV": "production",
+      "APP_DEBUG": "true",
+      "APP_URL": "https://pahiram-be.vercel.app",
 
-    "CACHE_DRIVER": "array",
-    "LOG_CHANNEL": "stderr",
-    "SESSION_DRIVER": "cookie"
+      "APP_CONFIG_CACHE": "/tmp/config.php",
+      "APP_EVENTS_CACHE": "/tmp/events.php",
+      "APP_PACKAGES_CACHE": "/tmp/packages.php",
+      "APP_ROUTES_CACHE": "/tmp/routes.php",
+      "APP_SERVICES_CACHE": "/tmp/services.php",
+      "VIEW_COMPILED_PATH": "/tmp",
 
-
+      "CACHE_DRIVER": "array",
+      "LOG_CHANNEL": "stderr",
+      "SESSION_DRIVER": "cookie"
+    }
   }
 }

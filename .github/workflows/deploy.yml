@@ -1,0 +1,37 @@
+name: Deploy Laravel App to Vercel
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+          extensions: pdo, pgsql
+
+      - name: Install Composer dependencies
+        run: composer install --no-dev --prefer-dist --optimize-autoloader
+
+      - name: Deploy to Vercel
+        run: vercel --prod
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+      - name: Check if migrations are needed and run them
+        run: |
+          if ! php artisan migrate:status | grep 'No'; then
+            echo "Migrations needed, running migrations..."
+            php artisan migrate --force
+            php artisan db:seed --force
+          else
+            echo "Migrations are up to date, skipping."
+          fi
