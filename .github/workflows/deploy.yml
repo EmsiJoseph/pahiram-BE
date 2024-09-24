@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -21,7 +22,7 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-dev --prefer-dist --optimize-autoloader
 
-      - name: Clear Laravel caches
+      - name: Clear Laravel cache
         run: |
           php artisan config:clear
           php artisan cache:clear
