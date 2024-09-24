@@ -21,17 +21,14 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-dev --prefer-dist --optimize-autoloader
 
+      - name: Clear Laravel caches
+        run: |
+          php artisan config:clear
+          php artisan cache:clear
+          php artisan route:clear
+          php artisan view:clear
+
       - name: Deploy to Vercel
         run: vercel --prod
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-
-      - name: Check if migrations are needed and run them
-        run: |
-          if ! php artisan migrate:status | grep 'No'; then
-            echo "Migrations needed, running migrations..."
-            php artisan migrate --force
-            php artisan db:seed --force
-          else
-            echo "Migrations are up to date, skipping."
-          fi
