@@ -19,6 +19,7 @@
     "DB_DATABASE": "neondb",
     "DB_USERNAME": "neondb_owner",
     "DB_PASSWORD": "jsJok0EcaTl7",
+    "DB_OPTIONS": "?options=endpoint%3Dep-young-brook-a53osgmy&sslmode=require",
 
     "APP_ENV": "production",
     "APP_DEBUG": "true",

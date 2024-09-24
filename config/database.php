@@ -72,12 +72,12 @@ return [
             'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
-            'schema' => 'public',
-            'sslmode' => 'require', // Enforce SSL mode
+            'prefix_indexes' => true,
+            'sslmode' => 'require', // Ensure SSL mode is required
             'options'   => [
                 PDO::ATTR_EMULATE_PREPARES => true,
                 PDO::ATTR_PERSISTENT => true,
-                'options' => '--endpoint=ep-young-brook-a53osgmy', // Replace with your endpoint ID
+                'options' => env('DB_OPTIONS', ''),  // Pass the options from the .env
             ],
         ],
 

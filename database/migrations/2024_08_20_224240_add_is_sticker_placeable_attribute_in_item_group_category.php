@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::table('item_group_categories', function (Blueprint $table) {
-            $table->boolean('is_barcode_sticker_placeable')->default(false); // Add this line
+            $table->integer('is_barcode_sticker_placeable')->default(false); // Add this line
         });
     }
 

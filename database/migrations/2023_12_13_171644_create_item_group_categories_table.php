@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('item_group_categories', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('category_name')->unique();
-            $table->boolean('is_consumable')->default(0);
-            
+            $table->integer('is_consumable')->default(0);
             $table->timestamps();
         });
     }

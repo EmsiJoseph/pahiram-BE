@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('department')->unique();
             $table->string('department_acronym')->unique();
             $table->uuid('supervisor_id')->nullable();
-            $table->boolean('is_lending_office')->default(0); 
+            $table->integer('is_lending_office')->default(0);
             $table->timestamps();
         });
     }
