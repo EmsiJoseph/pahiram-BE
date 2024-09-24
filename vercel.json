@@ -6,7 +6,8 @@
   },
   "routes": [{
     "src": "/(.*)",
-    "dest": "/api/index.php"
+//    "dest": "/api/index.php"
+    "dest": "/public/index.php"
   }],
   "env": {
     "APCIS_URL": "http://167.172.74.157/api",
