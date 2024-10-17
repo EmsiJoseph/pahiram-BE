@@ -9,6 +9,7 @@ use App\Http\Requests\ManageBorrowTransaction\GetSpecificPendingTransactionReque
 use App\Http\Requests\ManageBorrowTransaction\ReleaseApprovedItemRequest;
 use App\Http\Resources\BorrowedItemCollection;
 use App\Http\Resources\BorrowTransactionResource;
+use App\Http\Resources\BorrowTransactionCollection;
 use App\Http\Resources\EndorsementCollection;
 use App\Models\BorrowedItem;
 use App\Models\BorrowedItemStatus;
@@ -24,6 +25,7 @@ use App\Utils\Constants\Statuses\BORROWED_ITEM_STATUS;
 use App\Utils\Constants\Statuses\ITEM_STATUS;
 use App\Utils\Constants\Statuses\PENALIZED_TRANSAC_STATUS;
 use App\Utils\Constants\Statuses\TRANSAC_STATUS;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -160,7 +162,7 @@ class ManageBorrowTransactionController extends Controller
         // Return the paginated transactions using the EndorsementCollection
         return response()->json([
             'status' => true,
-            'data' => new EndorsementCollection($paginatedTransactions),
+            'data' => new BorrowTransactionCollection($paginatedTransactions),
             'method' => "GET"
         ]);
     }
@@ -217,7 +219,7 @@ class ManageBorrowTransactionController extends Controller
                 // Current Time and Date > Item start date 
                 $isApprovalOverdue = BorrowedItem::where('borrowing_transac_id', $transacId)
                     ->where('borrowed_item_status_id', $this->pendingItemApprovalId)
-                    ->where('start_date', '<', \Carbon\Carbon::now()->toDateTimeString()) // Where start date is greater than the current time
+                    ->where('start_date', '<', Carbon::now()->toDateTimeString()) // Where start date is greater than the current time
                     ->count();
 
 
