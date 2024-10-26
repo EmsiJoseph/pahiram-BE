@@ -25,6 +25,8 @@ jobs:
         run: |
           cp .env.example .env
           php artisan key:generate
+          php artisan migrate
+          php artisan db:seeds
 
       - name: Set permissions on storage and bootstrap/cache
         run: chmod -R 755 storage bootstrap/cache
