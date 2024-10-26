@@ -1,33 +1,23 @@
 <?php
 
-namespace App\Http\Requests\ManageEndorsement;
+namespace App\Http\Requests\ManageBorrowTransaction;
 
 use App\Exceptions\RequestExtraPayloadMsg;
 use App\Exceptions\RequestValidationFailedMsg;
-use App\Rules\EndorsementRules\IsAuthorizedToApproveEndorsement;
-use App\Rules\EndorsementRules\IsPendingEndorserApproval;
-use App\Rules\UserRules\IsEmployeeEmail;
-use Illuminate\Contracts\Validation\Validator;
+use App\Rules\ManageTransactionRules\IsAuthorizedToViewTransaction;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Contracts\Validation\Validator;
 
-class EndorsementApprovalRequest extends FormRequest
+class GetSpecificItemsOfBorrowTransactionRequest extends FormRequest
 {
-    private $errorCode = 422;
     public function rules(): array
     {
         return [
             'transactionId' => [
                 'required',
                 'exists:borrow_transactions,id',
-                new IsEmployeeEmail,
-                new IsAuthorizedToApproveEndorsement,
-                new IsPendingEndorserApproval
+                new IsAuthorizedToViewTransaction
             ],
-            'approval' => [
-                'required',
-                'boolean'
-            ]
-
         ];
     }
     public function all($keys = null)
@@ -46,7 +36,7 @@ class EndorsementApprovalRequest extends FormRequest
     }
     public function failedValidation(Validator $validator)
     {
-        $message = "Failed to update transaction";
+        $message = "Failed to return items";
         $errorCode = $this->errorCode;
         RequestValidationFailedMsg::errorResponse($validator, $message, $errorCode);
     }

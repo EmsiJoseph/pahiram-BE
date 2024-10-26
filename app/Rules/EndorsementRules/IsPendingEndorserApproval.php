@@ -5,7 +5,6 @@ namespace App\Rules\EndorsementRules;
 use App\Models\BorrowTransaction;
 use App\Services\RetrieveStatusService\BorrowTransactionStatusService;
 use Illuminate\Contracts\Validation\Rule;
-use Illuminate\Support\Facades\Auth;
 
 class IsPendingEndorserApproval implements Rule
 {
@@ -24,6 +23,6 @@ class IsPendingEndorserApproval implements Rule
 
     public function message()
     {
-        return 'Unauthorized access';
+        return 'Transaction should be pending endorse approval';
     }
 }
