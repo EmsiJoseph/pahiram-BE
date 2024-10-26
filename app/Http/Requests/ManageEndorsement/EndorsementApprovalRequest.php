@@ -21,9 +21,9 @@ class EndorsementApprovalRequest extends FormRequest
             'transactionId' => [
                 'required',
                 'exists:borrow_transactions,id',
-                new IsEmployeeEmail,
-                new IsTransactionEndorser,
-                new IsPendingEndorserApproval
+//                new IsEmployeeEmail,
+//                new IsTransactionEndorser,
+//                new IsPendingEndorserApproval
             ],
             'approval' => [
                 'required',
