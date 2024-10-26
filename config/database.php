@@ -74,11 +74,6 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
             'sslmode' => 'require', // Ensure SSL mode is required
-            'options'   => [
-                PDO::ATTR_EMULATE_PREPARES => true,
-                PDO::ATTR_PERSISTENT => true,
-                'options' => env('DB_OPTIONS', ''),  // Pass the options from the .env
-            ],
         ],
 
         'sqlsrv' => [
